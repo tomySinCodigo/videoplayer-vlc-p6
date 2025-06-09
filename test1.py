@@ -1,8 +1,9 @@
 from PySide6.QtWidgets import QWidget
-from PySide6.QtCore import QUrl, QTimer
-from PySide6.QtGui import QIcon
-from PySide6.QtMultimedia import QMediaPlayer
-from PySide6.QtMultimediaWidgets import QVideoWidget
+from PySide6.QtCore import QTimer
+# from PySide6.QtCore import QUrl, QTimer
+# from PySide6.QtGui import QIcon
+# from PySide6.QtMultimedia import QMediaPlayer
+# from PySide6.QtMultimediaWidgets import QVideoWidget
 from skin import Ui_Form
 import vlc
 
@@ -34,14 +35,27 @@ class QPlayer(QWidget, Ui_Form):
         self.sld_time.sliderMoved.connect(self.setPosition)
         self.sld_vol.sliderMoved.connect(self.setVolume)
         self.btn_toggle.clicked.connect(self.toggleCtrl)
+        self.btn_ff.clicked.connect(self.goForward)
+        self.btn_rw.clicked.connect(self.goRewind)
+        self.btn_left.clicked.connect(self._posPrev)
+        self.btn_right.clicked.connect(self._posNext)
 
         self.timer = QTimer(self)
         self.timer.timeout.connect(self.updatePos)
         self.timer.start(100)
 
-        # CONFIGs
-        self.setVolume(75)
-        self.stw.setCurrentIndex(1)
+        # sh = """QSlider::groove:Horizontal{background:#404040;}
+        # QSlider::handle:Horizontal{width: 12px; height: 6px;border-radius: 2px;
+        # background-color: #006262;border:1px solid #20B2AA;}
+        # QSlider::add-page:Horizontal{background:#26282C;}
+        # QSlider::sub-page:Horizontal{background:#20B2AA;}"""
+        # self.sld_vol.setStyleSheet(sh)
+        # sv =  """QSlider::groove:Horizontal{background:#202020;}
+        # QSlider::handle:Horizontal{width: 15px; height: 8px;border-radius: 4px;
+        # background-color: #CC005C;border:1px solid #303030;}
+        # QSlider::add-page:Horizontal{background:#26282C;}
+        # QSlider::sub-page:Horizontal{background:#CC393E;}"""
+        # self.sld_time.setStyleSheet(sv)
 
     def setVideo(self, file:str):
         media = self.instance.media_new(file)
@@ -52,6 +66,7 @@ class QPlayer(QWidget, Ui_Form):
 
     def stop(self):
         self.player.stop()
+        self.sld_time.setValue(0)
 
     def setPosition(self, pos):
         self.player.set_position(pos/1e3)
@@ -101,20 +116,33 @@ class QPlayer(QWidget, Ui_Form):
         index:int = 0 if self.stw.currentIndex()==1 else 1
         self.stw.setCurrentIndex(index)
 
+    def goForward(self):
+        value = self.sld_time.value()
+        self.setPosition(value+100)
 
+    def goRewind(self):
+        self.setPosition(self.sld_time.value()-100)
 
+    def _posNext(self):
+        self.setPosition(self.sld_time.value()+10)
+        if self.player.get_state() == vlc.State.Playing:
+            self.player.pause()
+
+    def _posPrev(self):
+        self.setPosition(self.sld_time.value()-10)
+        if self.player.get_state() == vlc.State.Playing:
+            self.player.pause()
 
 
 if __name__ == '__main__':
     import sys
     from PySide6.QtWidgets import QApplication
     app = QApplication(sys.argv)
-    # app.setStyle('Fusion')
-    # vi1 = "D:/SiSTEM/my24res/Varios/Old man dancing.mp4"
+    app.setStyle('Fusion')
     vi1 = 'D:/SiSTEM/dance at home_2.mp4'
     wg = QPlayer()
+    wg.setVolume(72)
     wg.show()
 
     wg.setVideo(vi1)
-
     sys.exit(app.exec())
