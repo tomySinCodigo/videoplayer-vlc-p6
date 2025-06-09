@@ -39,6 +39,7 @@ class QPlayer(QWidget, Ui_Form):
         self.btn_rw.clicked.connect(self.goRewind)
         self.btn_left.clicked.connect(self._posPrev)
         self.btn_right.clicked.connect(self._posNext)
+        self.btn_c.clicked.connect(self.saveCapture)
 
         self.timer = QTimer(self)
         self.timer.timeout.connect(self.updatePos)
@@ -132,6 +133,15 @@ class QPlayer(QWidget, Ui_Form):
         self.setPosition(self.sld_time.value()-10)
         if self.player.get_state() == vlc.State.Playing:
             self.player.pause()
+
+    def saveCapture(self):
+        current_time:int = self.player.get_time()
+        name = self.ms_hmsz(current_time).replace(':', '.')
+        success = self.player.video_take_snapshot(
+            0,f'{name}.png',0,0
+        )
+        if success == 0:
+            print(f"capturado -> {name}.png")
 
 
 if __name__ == '__main__':
