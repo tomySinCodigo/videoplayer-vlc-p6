@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'skin.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.9.0
+## Created by: Qt User Interface Compiler version 6.9.1
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -65,8 +65,8 @@ class Ui_Form(object):
 
         self.horizontalLayout_3.addWidget(self.btn_play)
 
-        self.stw_btn = QStackedWidget(self.fm_botones)
-        self.stw_btn.setObjectName(u"stw_btn")
+        self.stw = QStackedWidget(self.fm_botones)
+        self.stw.setObjectName(u"stw")
         self.pag_1 = QWidget()
         self.pag_1.setObjectName(u"pag_1")
         self.horizontalLayout_2 = QHBoxLayout(self.pag_1)
@@ -102,8 +102,8 @@ class Ui_Form(object):
 
         self.lb_vol = QLabel(self.pag_1)
         self.lb_vol.setObjectName(u"lb_vol")
-        self.lb_vol.setMinimumSize(QSize(0, 20))
-        self.lb_vol.setMaximumSize(QSize(26, 20))
+        self.lb_vol.setMinimumSize(QSize(24, 20))
+        self.lb_vol.setMaximumSize(QSize(24, 20))
         self.lb_vol.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.horizontalLayout.addWidget(self.lb_vol)
@@ -118,7 +118,7 @@ class Ui_Form(object):
 
         self.horizontalLayout_2.addLayout(self.horizontalLayout)
 
-        self.stw_btn.addWidget(self.pag_1)
+        self.stw.addWidget(self.pag_1)
         self.pag_2 = QWidget()
         self.pag_2.setObjectName(u"pag_2")
         self.horizontalLayout_6 = QHBoxLayout(self.pag_2)
@@ -144,12 +144,12 @@ class Ui_Form(object):
 
         self.horizontalLayout_5.addWidget(self.lb_timestamp_res)
 
-        self.pushButton = QPushButton(self.pag_2)
-        self.pushButton.setObjectName(u"pushButton")
-        self.pushButton.setMinimumSize(QSize(26, 20))
-        self.pushButton.setMaximumSize(QSize(26, 20))
+        self.btn_c = QPushButton(self.pag_2)
+        self.btn_c.setObjectName(u"btn_c")
+        self.btn_c.setMinimumSize(QSize(26, 20))
+        self.btn_c.setMaximumSize(QSize(26, 20))
 
-        self.horizontalLayout_5.addWidget(self.pushButton)
+        self.horizontalLayout_5.addWidget(self.btn_c)
 
         self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
@@ -186,9 +186,9 @@ class Ui_Form(object):
 
         self.horizontalLayout_6.addLayout(self.horizontalLayout_5)
 
-        self.stw_btn.addWidget(self.pag_2)
+        self.stw.addWidget(self.pag_2)
 
-        self.horizontalLayout_3.addWidget(self.stw_btn)
+        self.horizontalLayout_3.addWidget(self.stw)
 
         self.btn_toggle = QPushButton(self.fm_botones)
         self.btn_toggle.setObjectName(u"btn_toggle")
@@ -211,7 +211,7 @@ class Ui_Form(object):
 
         self.retranslateUi(Form)
 
-        self.stw_btn.setCurrentIndex(0)
+        self.stw.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(Form)
@@ -225,7 +225,7 @@ class Ui_Form(object):
         self.btn_stop.setText(QCoreApplication.translate("Form", u"S", None))
         self.lb_timestamp.setText(QCoreApplication.translate("Form", u"00:00:00.000", None))
         self.lb_timestamp_res.setText(QCoreApplication.translate("Form", u"00:00:00.000", None))
-        self.pushButton.setText(QCoreApplication.translate("Form", u"C", None))
+        self.btn_c.setText(QCoreApplication.translate("Form", u"C", None))
         self.btn_left.setText(QCoreApplication.translate("Form", u"<", None))
         self.btn_right.setText(QCoreApplication.translate("Form", u">", None))
         self.btn_rw.setText(QCoreApplication.translate("Form", u"R", None))
