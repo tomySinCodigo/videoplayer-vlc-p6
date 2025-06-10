@@ -19,21 +19,26 @@ from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QLabel,
     QPushButton, QSizePolicy, QSlider, QSpacerItem,
     QStackedWidget, QVBoxLayout, QWidget)
 
-class Ui_Form(object):
-    def setupUi(self, Form):
-        if not Form.objectName():
-            Form.setObjectName(u"Form")
-        Form.resize(491, 312)
-        Form.setStyleSheet(u"font: 8pt \"Lucida Console\";\n"
-"")
-        self.verticalLayout_2 = QVBoxLayout(Form)
+class Ui_SkinPlayer(object):
+    def setupUi(self, SkinPlayer):
+        if not SkinPlayer.objectName():
+            SkinPlayer.setObjectName(u"SkinPlayer")
+        SkinPlayer.resize(491, 312)
+        SkinPlayer.setStyleSheet(u"QLabel {\n"
+"	font: 8pt \"Lucida Console\";\n"
+"}\n"
+"QPushButton {\n"
+"	\n"
+"	font: 8pt \"Consolas\";\n"
+"}")
+        self.verticalLayout_2 = QVBoxLayout(SkinPlayer)
         self.verticalLayout_2.setSpacing(0)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout = QVBoxLayout()
         self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.fm_video = QFrame(Form)
+        self.fm_video = QFrame(SkinPlayer)
         self.fm_video.setObjectName(u"fm_video")
         self.fm_video.setFrameShape(QFrame.Shape.NoFrame)
         self.fm_video.setFrameShadow(QFrame.Shadow.Plain)
@@ -49,7 +54,7 @@ class Ui_Form(object):
 
         self.verticalLayout.addWidget(self.fm_video)
 
-        self.fm_botones = QFrame(Form)
+        self.fm_botones = QFrame(SkinPlayer)
         self.fm_botones.setObjectName(u"fm_botones")
         self.fm_botones.setMinimumSize(QSize(0, 18))
         self.fm_botones.setMaximumSize(QSize(16777215, 18))
@@ -147,31 +152,6 @@ class Ui_Form(object):
 
         self.horizontalLayout_5.addWidget(self.lb_timestamp)
 
-        self.lb_timestamp_res = QLabel(self.pag_2)
-        self.lb_timestamp_res.setObjectName(u"lb_timestamp_res")
-        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
-        sizePolicy1.setHorizontalStretch(0)
-        sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.lb_timestamp_res.sizePolicy().hasHeightForWidth())
-        self.lb_timestamp_res.setSizePolicy(sizePolicy1)
-        self.lb_timestamp_res.setMinimumSize(QSize(90, 20))
-        self.lb_timestamp_res.setMaximumSize(QSize(90, 20))
-        self.lb_timestamp_res.setAlignment(Qt.AlignmentFlag.AlignCenter)
-
-        self.horizontalLayout_5.addWidget(self.lb_timestamp_res)
-
-        self.btn_c = QPushButton(self.pag_2)
-        self.btn_c.setObjectName(u"btn_c")
-        self.btn_c.setMinimumSize(QSize(26, 18))
-        self.btn_c.setMaximumSize(QSize(26, 18))
-        self.btn_c.setFlat(True)
-
-        self.horizontalLayout_5.addWidget(self.btn_c)
-
-        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
-
-        self.horizontalLayout_5.addItem(self.horizontalSpacer)
-
         self.btn_left = QPushButton(self.pag_2)
         self.btn_left.setObjectName(u"btn_left")
         self.btn_left.setMinimumSize(QSize(26, 18))
@@ -204,8 +184,33 @@ class Ui_Form(object):
 
         self.horizontalLayout_5.addWidget(self.btn_ff)
 
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_5.addItem(self.horizontalSpacer)
+
 
         self.horizontalLayout_6.addLayout(self.horizontalLayout_5)
+
+        self.lb_timestamp_res = QLabel(self.pag_2)
+        self.lb_timestamp_res.setObjectName(u"lb_timestamp_res")
+        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.lb_timestamp_res.sizePolicy().hasHeightForWidth())
+        self.lb_timestamp_res.setSizePolicy(sizePolicy1)
+        self.lb_timestamp_res.setMinimumSize(QSize(90, 20))
+        self.lb_timestamp_res.setMaximumSize(QSize(90, 20))
+        self.lb_timestamp_res.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        self.horizontalLayout_6.addWidget(self.lb_timestamp_res)
+
+        self.btn_c = QPushButton(self.pag_2)
+        self.btn_c.setObjectName(u"btn_c")
+        self.btn_c.setMinimumSize(QSize(26, 18))
+        self.btn_c.setMaximumSize(QSize(26, 18))
+        self.btn_c.setFlat(True)
+
+        self.horizontalLayout_6.addWidget(self.btn_c)
 
         self.stw.addWidget(self.pag_2)
 
@@ -231,27 +236,27 @@ class Ui_Form(object):
         self.verticalLayout_2.addLayout(self.verticalLayout)
 
 
-        self.retranslateUi(Form)
+        self.retranslateUi(SkinPlayer)
 
         self.stw.setCurrentIndex(0)
 
 
-        QMetaObject.connectSlotsByName(Form)
+        QMetaObject.connectSlotsByName(SkinPlayer)
     # setupUi
 
-    def retranslateUi(self, Form):
-        Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
-        self.btn_play.setText(QCoreApplication.translate("Form", u"P", None))
-        self.lb_time.setText(QCoreApplication.translate("Form", u"00:00:00", None))
-        self.lb_vol.setText(QCoreApplication.translate("Form", u"100", None))
-        self.btn_stop.setText(QCoreApplication.translate("Form", u"S", None))
-        self.lb_timestamp.setText(QCoreApplication.translate("Form", u"00:00:00.000", None))
-        self.lb_timestamp_res.setText(QCoreApplication.translate("Form", u"00:00:00.000", None))
-        self.btn_c.setText(QCoreApplication.translate("Form", u"C", None))
-        self.btn_left.setText(QCoreApplication.translate("Form", u"<", None))
-        self.btn_right.setText(QCoreApplication.translate("Form", u">", None))
-        self.btn_rw.setText(QCoreApplication.translate("Form", u"R", None))
-        self.btn_ff.setText(QCoreApplication.translate("Form", u"F", None))
-        self.btn_toggle.setText(QCoreApplication.translate("Form", u"T", None))
+    def retranslateUi(self, SkinPlayer):
+        SkinPlayer.setWindowTitle(QCoreApplication.translate("SkinPlayer", u"Form", None))
+        self.btn_play.setText(QCoreApplication.translate("SkinPlayer", u"P", None))
+        self.lb_time.setText(QCoreApplication.translate("SkinPlayer", u"00:00:00", None))
+        self.lb_vol.setText(QCoreApplication.translate("SkinPlayer", u"100", None))
+        self.btn_stop.setText(QCoreApplication.translate("SkinPlayer", u"S", None))
+        self.lb_timestamp.setText(QCoreApplication.translate("SkinPlayer", u"00:00:00.000", None))
+        self.btn_left.setText(QCoreApplication.translate("SkinPlayer", u"<", None))
+        self.btn_right.setText(QCoreApplication.translate("SkinPlayer", u">", None))
+        self.btn_rw.setText(QCoreApplication.translate("SkinPlayer", u"R", None))
+        self.btn_ff.setText(QCoreApplication.translate("SkinPlayer", u"F", None))
+        self.lb_timestamp_res.setText(QCoreApplication.translate("SkinPlayer", u"00:00:00.000", None))
+        self.btn_c.setText(QCoreApplication.translate("SkinPlayer", u"C", None))
+        self.btn_toggle.setText(QCoreApplication.translate("SkinPlayer", u"T", None))
     # retranslateUi
 
